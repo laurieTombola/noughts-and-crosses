@@ -4,7 +4,8 @@
         lessLintTask = require('./.grunt/less-lint-task'),
         lessTask = require('./.grunt/less-task'),
         jsLintTask = require('./.grunt/js-lint-task'),
-        concatTask = require('./.grunt/js-concat-task');
+        concatTask = require('./.grunt/js-concat-task'),
+        cleanTask = require('./.grunt/clean-task');
 
     module.exports = function(grunt){
         grunt.initConfig({
@@ -13,13 +14,15 @@
             lesslint: lessLintTask,
             less: lessTask,
             jshint: jsLintTask,
-            concat: concatTask
+            concat: concatTask,
+            clean: cleanTask
         });
 
         grunt.loadNpmTasks('grunt-contrib-copy');
         grunt.loadNpmTasks('grunt-contrib-less');
         grunt.loadNpmTasks('grunt-contrib-jshint');
         grunt.loadNpmTasks('grunt-contrib-concat');
+        grunt.loadNpmTasks('grunt-contrib-clean');
 
         grunt.loadNpmTasks('grunt-lesslint');
 
