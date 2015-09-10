@@ -21,9 +21,9 @@
             expand: true
         },
         bower: {
-            cwd: '',
-            src: ['bower_components/**/*.*'],
-            dest: '.build/',
+            cwd: 'bower_components',
+            src: ['**/*.*'],
+            dest: '.build/main-app/app/third-party/',
             expand: true
         }
     };

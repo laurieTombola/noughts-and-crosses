@@ -12,7 +12,7 @@
             src: ['.build/main-app/app/**/*.html']
         },
         bower: {
-            src: ['.build/bower_components/']
+            src: ['.build/main-app/app/third-party/bower_components/']
         },
         css: {
             src: ['.build/main-app/app/css/']

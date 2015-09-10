@@ -31,7 +31,7 @@
 
         grunt.registerTask('lesser', ['lesslint', 'clean:css', 'less']);
         grunt.registerTask('copyFiles', ['clean:bower', 'clean:images', 'clean:sounds', 'clean:html', 'copy']);
-        grunt.registerTask('copyJS', ['jshint', 'concat']);
+        grunt.registerTask('copyJS', ['jshint', 'clean:js', 'concat']);
         grunt.registerTask('default', ['lesser', 'copyFiles', 'copyJS', 'watch']);
     }
 })();
