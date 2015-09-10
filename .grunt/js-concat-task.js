@@ -6,5 +6,5 @@
             dest: '.build//main-app/app/js/app.js',
             expand: false
         }
-    }
+    };
 })();

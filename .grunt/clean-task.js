@@ -3,25 +3,25 @@
 
     module.exports={
         images: {
-            src: ['.build/main-app/app/image/**/*.*']
+            src: ['.build/main-app/app/image/']
         },
         sounds: {
-            src: ['.build/main-app/app/sound/**/*.*']
+            src: ['.build/main-app/app/sound/']
         },
         html: {
-            src: ['.build/main-app/app/*.html']
+            src: ['.build/main-app/app/**/*.html']
         },
         bower: {
-            src: ['.build/bower_components/**/*.*']
+            src: ['.build/bower_components/']
         },
         css: {
-            src: ['.build/main-app/app/css/**/*.*']
+            src: ['.build/main-app/app/css/']
         },
         js: {
-            src: ['.build/main-app/app/js/**/*.*']
+            src: ['.build/main-app/app/js/']
         },
         all: {
-            src: ['.build/']
+            src: ['./.build/']
         }
 
     };
