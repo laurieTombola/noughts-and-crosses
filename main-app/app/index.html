@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="Tombola.MyModule">
+<head>
+    <meta charset="UTF-8">
+    <title>My Awesome Web Page</title>
+    <style src="css/main.css"></style>
+    <script src="js/app.js"></script>
+</head>
+<body ng-controller="MyController">
+    <h1>{{textMessage}}</h1>
+
+    <script src="https://code.angularjs.org/1.4.5/angular.min.js"></script>
+    <script>
+        angular.module("Tombola.Module", [])
+            .controller("MyController", function($scope){
+                    $scope.textMessage = "Hello World";
+                });
+    </script>
+</body>
+</html>

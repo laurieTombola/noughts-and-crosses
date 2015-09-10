@@ -1,0 +1,22 @@
+{
+  "name": "noughts-and-crosses",
+  "version": "0.0.0",
+  "homepage": "https://github.com/laurieTombola/noughts-and-crosses",
+  "authors": [
+    "Laurie Athey <laurie.athey@tombola.co.uk>"
+  ],
+  "description": "A noughts and crosses game made with angularjs",
+  "main": "app.js",
+  "moduleType": [
+    "node"
+  ],
+  "keywords": [
+    "html",
+    "javascript",
+    "angluarjs"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "angular": "~1.4.5"
+  }
+}
