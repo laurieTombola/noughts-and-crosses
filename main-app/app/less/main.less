@@ -1,10 +1,35 @@
-@dark-red: #2f0c07;
+@grey_border: #555555;
+
 
 body {
+
   background: black;
+  color: white;
+  main {
+    text-align: center;
+    width: 980px;
+    margin-left: auto;
+    margin-right: auto;
+
+  }
 }
 
-h1 {
-  color: @dark-red;
-  border: solid 2pt @dark-red;
+table {
+  margin-left: auto;
+  margin-right: auto;
+  display: table;
+  tr {
+    td {
+      border: 4px @grey_border solid;
+      div {
+        width: 100px;
+        height: 100px;
+      }
+    }
+  }
 }
+
+.image0, .image1, .image2 { background-image: url('../image/puppy_kitten_sprite.png'); width: 100px; height: 100px;}
+.image0 { background-position: 0 0; }
+.image1 { background-position: -105px 0; }
+.image2 { background-position: -210px 0; }

@@ -2,11 +2,58 @@
 <html lang="en" ng-app="Tombola.Games.NoughtsAndCrosses">
 <head>
     <meta charset="UTF-8">
-    <title>My Awesome Web Page</title>
-    <style src="css/main.css"></style>
+    <title>Noughts And Crosses</title>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
-<body ng-controller="MyController">
-    <h1>{{textMessage}}</h1>
+<body>
+    <main ng-controller="Game">
+        <div class="siteTitle">
+            <h1>Noughts And Crosses</h1>
+            <h3>By The one and only</h3>
+            <h3>Laurie</h3>
+            <h3>Player {{turn}}'s turn</h3>
+        </div>
+        <div>
+            <h1>{{pageHeading}}</h1>
+            <table>
+                <tr>
+                    <td>
+                        <div class="image{{board[0]}}" ng-click="clickBox(0)"></div>
+                    </td>
+                    <td>
+                        <div class="image{{board[1]}}"  ng-click="clickBox(1)"></div>
+                    </td>
+                    <td>
+                        <div class="image{{board[2]}}"  ng-click="clickBox(2)"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="image{{board[3]}}"  ng-click="clickBox(3)"></div>
+                    </td>
+                    <td>
+                        <div class="image{{board[4]}}"  ng-click="clickBox(4)"></div>
+                    </td>
+                    <td>
+                        <div class="image{{board[5]}}"  ng-click="clickBox(5)"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="image{{board[6]}}"  ng-click="clickBox(6)"></div>
+                    </td>
+                    <td>
+                        <div class="image{{board[7]}}"  ng-click="clickBox(7)"></div>
+                    </td>
+                    <td>
+                        <div class="image{{board[8]}}"  ng-click="clickBox(8)"></div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </main>
+
+
 
     <script src="third-party/angular/angular.min.js"></script>
     <script src="js/app.js"></script>
