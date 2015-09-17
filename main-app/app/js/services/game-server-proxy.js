@@ -2,39 +2,38 @@
     'use strict';
 
     angular.module('Tombola.Games.NoughtsAndCrosses')
-        .service('game-server-proxy',['$http', function($http){
+        .service('GameServerProxy',['$q', '$http', function($q, $http){
             var me = this;
             me.newGame = function(player1Type, player2Type){
-                $http.withCredentials = true;
-
-                $http.post("http://eutaveg-01.tombola.emea:35000/api/v1.0/newgame", {'player1':player1Type, 'player2':player2Type}).
-                    then(function(response) {
+                var defered = $q.defer();
+                $http.post("http://eutaveg-01.tombola.emea:35000/api/v1.0/newgame", {'player1':player1Type, 'player2':player2Type}, {'withCredentials': 'true'})
+                    .then(function(response) {
                         // this callback will be called asynchronously
                         // when the response is available
-                        me.response = response;
-                        console.log('success new game: '+response.data.outcome);
+                        defered.resolve(response.data);
                     }, function(response) {
                         // called asynchronously if an error occurs
                         // or server returns response with an error status.
-                        console.log('failure new game: '+response);
+                        defered.reject(response.data);
                     });
+                return defered.promise;
             };
 
-            me.makeMove = function(player, move, successCallback, failureCallback){
-                $http.withCredentials = true;
-                $http.post('http://eutaveg-01.tombola.emea:35000/api/v1.0/makemove', {'playerNumber':player, 'chosenSquare':move}).
-                    then(function(response) {
+            me.makeMove = function(player, move){
+                var defered = $q.defer();
+                $http.post('http://eutaveg-01.tombola.emea:35000/api/v1.0/makemove', {'playerNumber':player, 'chosenSquare':move}, {'withCredentials': 'true'})
+                    .then(function(response) {
                         // this callback will be called asynchronously
                         // when the response is available
-                        successCallback(response);
-                        console.log('success: '+response);
+                        defered.resolve(response);
                         me.response = response;
                         return response;
                     }, function(response) {
                         // called asynchronously if an error occurs
                         // or server returns response with an error status.
-                        failureCallback(response);
+                        defered.reject(response);
                     });
+                return defered.promise;
             };
         }]);
 })();

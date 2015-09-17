@@ -3,7 +3,7 @@
 
     module.exports={
         images: {
-            src: ['.build/main-app/app/image/']
+            src: ['.build/main-app/app/image']
         },
         sounds: {
             src: ['.build/main-app/app/sound/']

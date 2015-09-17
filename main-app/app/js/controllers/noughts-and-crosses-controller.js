@@ -3,25 +3,58 @@
 
 
     angular.module('Tombola.Games.NoughtsAndCrosses')
-        .controller("Game", ['$scope','game-server-proxy','$q',function($scope, proxy, $q) {
+        .controller("Game", ['$scope','GameServerProxy',function($scope, proxy) {
             $scope.pageHeading = "Kittens Vs Puppies! Fighto!";
             $scope.board ='000000000';
             $scope.turn = 1;
-            $scope.player1Type = 'human';
-            $scope.player2Type = 'human';
-            proxy.newGame($scope.player1Type,$scope.player2Type);
+            $scope.player1 = {
+                type:'human',
+                alt:'human player icon'
+            };
+            $scope.player2 = {
+                type:'human',
+                alt:'human player icon'
+            };
+            $scope.showGame = false;
+            var me = this;
+            me.gameState = 'Continue';
+
+            $scope.showTheGame = function(){
+                if(validatePlayerType($scope.player1.type) && validatePlayerType($scope.player2.type) ){
+                    intialiseTurn($scope.player1.type, $scope.player2.type);
+                    proxy.newGame($scope.player1.type,$scope.player2.type)
+                        .then(function(data){
+                            console.log('New Game Created: ' + data.outcome);
+                            $scope.showGame = true;
+                            $scope.board = data.gameboard;
+                            $scope.gameState = data.outcome;
+                        },
+                        function(errorMessage){
+                            console.log('Error: ' + errorMessage);
+                        });
+                }
+                else {
+                    console.log('Invalid Player Type: ' + $scope.player1.type + ' ' + $scope.player2.type);
+                }
+            };
 
             $scope.clickBox = function(box){
-                if($scope.board[box] === '0'){
-                    proxy.makeMove($scope.turn, box, function(response){
-                        console.log("Success: "+response.data.outcome);
-                    },
-                    function(response){
-                        console.log("Failure: "+response.data);
-                    });
-                    //console.log($scope.board);
-                    //console.log("Set to "+$scope.turn);
-                    $scope.swapTurn();
+                if($scope.board[box] === '0' && me.gameState === 'Continue'){
+                    proxy.makeMove($scope.turn, box)
+                        .then(function(response){
+                            // Success
+                            $scope.board = response.data.gameboard;
+                            me.gameState = response.data.outcome;
+                            if(me.gameState === 'Draw'){
+                                alert('Its a draw!');
+                            }
+                            me.gameState = response.data.outcome;
+                            swapTurn($scope.player1.type, $scope.player2.type);
+                        },
+                        function(response){
+                            // Failure
+                            console.log('Make Move Failed: '+ $scope.turn + ' |||||| ' + response.data);
+                        });
                 }
                 else {
                     //console.log("Already Filled");
@@ -32,8 +65,50 @@
                 return this.substr(0, index) + character + this.substr(index+character.length);
             };
 
-            $scope.swapTurn = function(){
-                $scope.turn = $scope.turn === 1 ? 2 : 1;
+            var swapTurn = function(player1Type, player2Type){
+                if(player1Type === 'human' && player2Type === 'human'){
+                    $scope.turn = $scope.turn === 1 ? 2 : 1;
+                }
+            };
+
+            $scope.changePlayerType = function(playerNumber){
+                if(playerNumber === 1){
+                    $scope.player1.type = nextType($scope.player1.type);
+                    $scope.player1.alt = $scope.player1.type + " player icon";
+                }
+                else {
+                    $scope.player2.type = nextType($scope.player2.type);
+                    $scope.player2.alt = $scope.player2.type + " player icon";
+                }
+            };
+
+            var nextType = function(playerType){
+                if(playerType === 'human'){
+                    return 'random';
+                }
+                else if(playerType === 'random'){
+                    return 'pre-trained';
+                }
+                else{ // player 1 type is pre-trained
+                    return 'human';
+                }
+            };
+
+            var validatePlayerType = function(playerType){
+                if(playerType === 'human' || playerType === 'random' || playerType === 'pre-trained'){
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            };
+            var intialiseTurn = function(player1Type, player2Type){
+                if(player1Type !== 'human' && player2Type === 'human'){
+                    $scope.turn = 2;
+                }
+                else {
+                    $scope.turn = 1;
+                }
             };
     }]);
 })();

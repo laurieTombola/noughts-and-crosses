@@ -7,50 +7,73 @@
 </head>
 <body>
     <main ng-controller="Game">
-        <div class="siteTitle">
-            <h1>Noughts And Crosses</h1>
-            <h3>By The one and only</h3>
-            <h3>Laurie</h3>
-            <h3>Player {{turn}}'s turn</h3>
+        <div ng-hide="showGame">
+            <h1>Noughts & Crosses</h1>
+            <h2>Kittens & Puppies Style</h2>
+            <div class="playerType{{player1.type}}" alt="{{player1.alt}}" ng-click="changePlayerType(1)"></div>
+            <div class="playerType{{player2.type}}" alt="{{player2.alt}}" ng-click="changePlayerType(2)"></div><br>
+            <select ng-model="player1.type">
+                <option value="human">human</option>
+                <option value="random">random</option>
+                <option value="pre-trained">pre-trained</option>
+            </select>
+            <select ng-model="player2.type">
+                <option value="human">human</option>
+                <option value="random">random</option>
+                <option value="pre-trained">pre-trained</option>
+            </select><br>
+            <button ng-click="showTheGame()">Start Game</button>
         </div>
-        <div>
-            <h1>{{pageHeading}}</h1>
-            <table>
-                <tr>
-                    <td>
-                        <div class="image{{board[0]}}" ng-click="clickBox(0)"></div>
-                    </td>
-                    <td>
-                        <div class="image{{board[1]}}"  ng-click="clickBox(1)"></div>
-                    </td>
-                    <td>
-                        <div class="image{{board[2]}}"  ng-click="clickBox(2)"></div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="image{{board[3]}}"  ng-click="clickBox(3)"></div>
-                    </td>
-                    <td>
-                        <div class="image{{board[4]}}"  ng-click="clickBox(4)"></div>
-                    </td>
-                    <td>
-                        <div class="image{{board[5]}}"  ng-click="clickBox(5)"></div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="image{{board[6]}}"  ng-click="clickBox(6)"></div>
-                    </td>
-                    <td>
-                        <div class="image{{board[7]}}"  ng-click="clickBox(7)"></div>
-                    </td>
-                    <td>
-                        <div class="image{{board[8]}}"  ng-click="clickBox(8)"></div>
-                    </td>
-                </tr>
-            </table>
+
+        <div ng-show="showGame">
+            <div class="siteTitle">
+                <h1>Noughts And Crosses</h1>
+                <h3>By The one and only</h3>
+                <h3>Laurie</h3>
+            </div>
+            <div>
+                <h1>{{pageHeading}}</h1>
+                <h3>Player {{turn}}'s turn</h3>
+                <table>
+                    <tr>
+                        <td>
+                            <div class="image{{board[0]}}" ng-click="clickBox(0)"></div>
+                        </td>
+                        <td>
+                            <div class="image{{board[1]}}"  ng-click="clickBox(1)"></div>
+                        </td>
+                        <td>
+                            <div class="image{{board[2]}}"  ng-click="clickBox(2)"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="image{{board[3]}}"  ng-click="clickBox(3)"></div>
+                        </td>
+                        <td>
+                            <div class="image{{board[4]}}"  ng-click="clickBox(4)"></div>
+                        </td>
+                        <td>
+                            <div class="image{{board[5]}}"  ng-click="clickBox(5)"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="image{{board[6]}}"  ng-click="clickBox(6)"></div>
+                        </td>
+                        <td>
+                            <div class="image{{board[7]}}"  ng-click="clickBox(7)"></div>
+                        </td>
+                        <td>
+                            <div class="image{{board[8]}}"  ng-click="clickBox(8)"></div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <button ng-click="showGame=false">Select Players</button>
+            <button ng-click="showTheGame()">Reset</button>
         </div>
+
     </main>
 
 
