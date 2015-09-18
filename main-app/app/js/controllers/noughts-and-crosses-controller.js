@@ -15,6 +15,7 @@
                 type:'human',
                 alt:'human player icon'
             };
+
             $scope.showGame = false;
             var me = this;
             me.gameState = 'Continue';
