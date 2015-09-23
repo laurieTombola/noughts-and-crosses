@@ -7,6 +7,7 @@
             $scope.pageHeading = "Kittens Vs Puppies! Fighto!";
             $scope.board ='000000000';
             $scope.turn = 1;
+            $scope.squareNumber = 0;
             $scope.player1 = {
                 type:'human',
                 alt:'human player icon'
@@ -40,7 +41,7 @@
             };
 
             $scope.clickBox = function(box){
-                if($scope.board[box] === '0' && me.gameState === 'Continue'){
+                if($scope.board[parseInt(box)] === '0' && me.gameState === 'Continue'){
                     proxy.makeMove($scope.turn, box)
                         .then(function(response){
                             // Success
@@ -73,14 +74,8 @@
             };
 
             $scope.changePlayerType = function(playerNumber){
-                if(playerNumber === 1){
-                    $scope.player1.type = nextType($scope.player1.type);
-                    $scope.player1.alt = $scope.player1.type + " player icon";
-                }
-                else {
-                    $scope.player2.type = nextType($scope.player2.type);
-                    $scope.player2.alt = $scope.player2.type + " player icon";
-                }
+                $scope['player' + playerNumber].type = nextType($scope['player' + playerNumber].type);
+                $scope['player' + playerNumber].alt = $scope['player' + playerNumber].type + " player icon";
             };
 
             var nextType = function(playerType){
