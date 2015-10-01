@@ -1,10 +1,10 @@
 (function () {
     'use strict';
-    angular.module('Tombola.Games.NoughtsAndCrosses')
+    angular.module('Tombola.Games.NoughtsAndCrosses.Game')
         .directive('gameBoard', [function(){
             return {
                 restrict: 'E',
-                templateUrl: 'partials/game-board.html'
+                templateUrl: 'html/game-board.html'
             };
         }]);
 })();

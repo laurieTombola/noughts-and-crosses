@@ -14,7 +14,7 @@
             tasks: ['copy:mainappsounds']
         },
         html: {
-            files: ['main-app/app/*.html', 'main-app/app/partials/*.html'],
+            files: ['main-app/app/*.html', 'main-app/app/html/*.html'],
             tasks: ['copy:html']
         },
         bower: {
@@ -22,7 +22,7 @@
             tasks: ['copy:bower']
         },
         js: {
-            files: ['main-app/app/js/**/*.js'],
+            files: ['main-app/app/scripts/**/*.js'],
             tasks: ['copyJS']
         }
     };

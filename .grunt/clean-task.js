@@ -18,7 +18,7 @@
             src: ['.build/main-app/app/css/']
         },
         js: {
-            src: ['.build/main-app/app/js/']
+            src: ['.build/main-app/app/scripts/']
         },
         all: {
             src: ['./.build/']

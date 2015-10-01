@@ -16,7 +16,7 @@
         },
         html: {
             cwd: '',
-            src: ['main-app/app/*.html', 'main-app/app/partials/**/*.html'],
+            src: ['main-app/app/*.html', 'main-app/app/html/**/*.html'],
             dest: '.build/',
             expand: true
         },
