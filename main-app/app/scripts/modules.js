@@ -26,8 +26,10 @@
                 .state('game',{
                     url:'/game',
                     templateUrl: 'html/game-state.html'
+                })
+                .state('win',{
+                    url:'/win',
+                    templateUrl: 'html/win-state.html'
                 });
         });
-
-
 })();

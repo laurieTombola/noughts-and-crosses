@@ -1,7 +1,8 @@
 (function () {
     'use strict';
     angular.module('Tombola.Games.NoughtsAndCrosses.Game')
-        .controller('Game', ['$scope', 'GameServerProxy', 'PlayerType', 'GameStatus',function($scope, proxy, playerType, game){
+        .controller('Game', ['$scope', '$state', '$interval', 'GameServerProxy', 'PlayerType', 'GameStatus',
+            function($scope, $state, $interval, proxy, playerType, game){
             $scope.pageHeading = "Kittens Vs Puppies! Fighto!";
             $scope.turn = 1;
             console.log('Game Controller Loaded');
