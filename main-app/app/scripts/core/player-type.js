@@ -3,28 +3,55 @@
 
     angular.module('Tombola.Games.NoughtsAndCrosses.PlayerType')
         .service('PlayerType', [function(){
-
-            var player1 = {
+            var me = this;
+            me.player1 = {
                 type:'human',
                 alt:'human player icon'
             };
 
-            var player2 = {
+            me.player2 = {
                 type:'human',
                 alt:'human player icon'
             };
 
-            this.getPlayer1 = function(){
-                return player1;
+            me.getPlayer1 = function(){
+                return me.player1;
             };
-            this.getPlayer2 = function(){
-                return player2;
+            me.getPlayer2 = function(){
+                return me.player2;
             };
-            this.setPlayer1 = function(value){
-                player1 = value;
+            me.setPlayer1 = function(value){
+                me.player1 = value;
             };
-            this.setPlayer2 = function(value){
-                player2 = value;
+            me.setPlayer2 = function(value){
+                me.player2 = value;
+            };
+
+            $scope.changePlayerType = function(playerNumber){
+                var player = playerType['getPlayer' + playerNumber]();
+                player.type = nextType(player.type);
+                playerType['setPlayer' + playerNumber](player);
+            };
+
+            var nextType = function(playerType){
+                if(playerType === 'human'){
+                    return 'random';
+                }
+                else if(playerType === 'random'){
+                    return 'pre-trained';
+                }
+                else{ // player 1 type is pre-trained
+                    return 'human';
+                }
+            };
+
+            var validatePlayerType = function(playerType){
+                if(playerType === 'human' || playerType === 'random' || playerType === 'pre-trained'){
+                    return true;
+                }
+                else {
+                    return false;
+                }
             };
         }]);
 })();

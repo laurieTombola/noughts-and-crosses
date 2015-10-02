@@ -5,7 +5,8 @@
             return {
                 restrict: 'E',
                 template: function(element, attributes){
-                    var html = '<div class="image{{board()['+ attributes.squareNumber+']}}" ng-click="clickBox('+attributes.squareNumber+')"></div>';
+                    var html = '<div class="image{{board()['+ attributes.squareNumber+
+                        ']}}" ng-click="clickBox('+attributes.squareNumber+')"></div>';
                     return html;
                 }
             };

@@ -1,8 +1,7 @@
 (function () {
     'use strict';
     angular.module('Tombola.Games.NoughtsAndCrosses.Game')
-        .controller('Game', ['$scope', '$state', '$interval', 'GameServerProxy', 'PlayerType', 'GameStatus',
-            function($scope, $state, $interval, proxy, playerType, game){
+        .controller('Game', ['$scope', '$state', '$interval', 'GameServerProxy', 'PlayerType', 'GameStatus', function($scope, $state, $interval, proxy, playerType, game){
             $scope.pageHeading = "Kittens Vs Puppies! Fighto!";
             $scope.turn = 1;
             console.log('Game Controller Loaded');
@@ -35,12 +34,14 @@
                             game.setState(response.data.outcome);
                             if(game.getState() === 'Draw'){
                                 console.log('Draw');
-                                alert('Its a draw!');
                             }
                             else if(game.getState() === 'Win'){
                                 console.log('Win');
-                                alert('Its a win!');
                                 $scope.pageHeading = 'Player ' + response.data.winner + 'Wins!';
+                                $interval(function(){
+                                    console.log('should be switching to win');
+                                    $state.go('win');
+                                }, 6000, 1);
                             }
                             else {
                             }
@@ -61,6 +62,14 @@
                 if(player1Type === 'human' && player2Type === 'human'){
                     $scope.turn = $scope.turn === 1 ? 2 : 1;
                 }
+            };
+
+            var isHumanVsComputer = function(){
+                var itIs = true;
+                if(playerType.getPlayer1().type === 'human' && playerType.getPlayer2().type === 'human'){
+                    itIs = false;
+                }
+                return itIs;
             };
     }]);
 })();
