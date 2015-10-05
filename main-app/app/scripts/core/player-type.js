@@ -27,10 +27,8 @@
                 me.player2 = value;
             };
 
-            $scope.changePlayerType = function(playerNumber){
-                var player = playerType['getPlayer' + playerNumber]();
-                player.type = nextType(player.type);
-                playerType['setPlayer' + playerNumber](player);
+            me.changePlayerType = function(playerNumber){
+                me['player' + playerNumber].type = nextType(me['player' + playerNumber].type);
             };
 
             var nextType = function(playerType){

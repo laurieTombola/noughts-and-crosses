@@ -2,12 +2,12 @@
     'use strict';
     angular.module('Tombola.Games.NoughtsAndCrosses.Game')
         .controller('Game', ['$scope', '$state', '$interval', 'GameServerProxy', 'PlayerType', 'GameStatus', function($scope, $state, $interval, proxy, playerType, game){
+            var me = this;
             $scope.pageHeading = "Kittens Vs Puppies! Fighto!";
             $scope.turn = 1;
             console.log('Game Controller Loaded');
-
+            me.turnDelayPromise = null;
             $scope.showGame = false;
-            var me = this;
 
             var intialiseTurn = function(){
                 if(playerType.getPlayer1().type !== 'human' && playerType.getPlayer2().type === 'human'){
@@ -30,7 +30,14 @@
                     proxy.APICall('makemove', {'playerNumber':$scope.turn, 'chosenSquare':box})
                         .then(function(response){
                             // Success
-                            game.setBoard(response.data.gameboard);
+                            if(isHumanVsComputer()){
+                                game.setBoard(setCharAt(game.getBoard(), box, $scope.turn));
+                                $scope.turn = $scope.turn === 1 ? 2 : 1;
+                                me.turnDelayPromise = $interval(function(){game.setBoard(response.data.gameboard);$scope.turn = $scope.turn === 1 ? 2 : 1;}, 2000, 1);
+                            }
+                            else{
+                                game.setBoard(response.data.gameboard);
+                            }
                             game.setState(response.data.outcome);
                             if(game.getState() === 'Draw'){
                                 console.log('Draw');
@@ -71,5 +78,10 @@
                 }
                 return itIs;
             };
+
+            function setCharAt(str,index,chr) {
+                if(index > str.length-1) return str;
+                return str.substr(0,index) + chr + str.substr(index+1);
+            }
     }]);
 })();

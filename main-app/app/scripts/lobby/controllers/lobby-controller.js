@@ -13,7 +13,7 @@
                 };
 
             $scope.showTheGame = function(){
-                if(validatePlayerType(playerType.getPlayer1().type) && validatePlayerType(playerType.getPlayer2().type) ){
+                if(playerType.validatePlayerType(playerType.getPlayer1().type) && validatePlayerType(playerType.getPlayer2().type) ){
                     proxy.APICall('newgame', {'player1':playerType.getPlayer1().type, 'player2':playerType.getPlayer2().type})
                         .then(function(response){
                             console.log('New Game Created: ' + response.data.outcome);
@@ -31,21 +31,7 @@
             };
 
             $scope.changePlayerType = function(playerNumber){
-                var player = playerType['getPlayer' + playerNumber]();
-                player.type = nextType(player.type);
-                playerType['setPlayer' + playerNumber](player);
-            };
-
-            var nextType = function(playerType){
-                if(playerType === 'human'){
-                    return 'random';
-                }
-                else if(playerType === 'random'){
-                    return 'pre-trained';
-                }
-                else{ // player 1 type is pre-trained
-                    return 'human';
-                }
+                playerType.changePlayerType(playerNumber);
             };
 
             var validatePlayerType = function(playerType){

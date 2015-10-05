@@ -5,6 +5,8 @@
 
     angular.module('Tombola.Games.NoughtsAndCrosses.Win',[]);
 
+    angular.module('Tombola.Games.NoughtsAndCrosses.Win',[]);
+
     angular.module('Tombola.Games.NoughtsAndCrosses.Lobby',
         ['Tombola.Games.NoughtsAndCrosses.API']);
 
