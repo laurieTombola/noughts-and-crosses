@@ -51,5 +51,10 @@
                     return false;
                 }
             };
+
+            me.isHumanVsComputer = function(){
+                return (me.player1.type !== 'human' || me.player2.type !== 'human');
+            };
+
         }]);
 })();

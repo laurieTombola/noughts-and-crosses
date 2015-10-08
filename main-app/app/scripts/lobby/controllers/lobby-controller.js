@@ -16,7 +16,6 @@
                 if(playerType.validatePlayerType(playerType.getPlayer1().type) && validatePlayerType(playerType.getPlayer2().type) ){
                     proxy.APICall('newgame', {'player1':playerType.getPlayer1().type, 'player2':playerType.getPlayer2().type})
                         .then(function(response){
-                            console.log('New Game Created: ' + response.data.outcome);
                             game.setBoard(response.data.gameboard);
                             game.setState(response.data.outcome);
                             $state.go('game');
