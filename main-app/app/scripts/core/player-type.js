@@ -43,8 +43,8 @@
                 }
             };
 
-            me.validatePlayerType = function(playerType){
-                if(playerType === 'human' || playerType === 'random' || playerType === 'pre-trained'){
+            me.validatePlayerType = function(number){
+                if(me['player'+number] === 'human' || me['player'+number] === 'random' || me['player'+number] === 'pre-trained'){
                     return true;
                 }
                 else {
