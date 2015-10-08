@@ -22,5 +22,21 @@
             me.setState = function(newGameState){
                 me.gameState = newGameState;
             };
+
+            me.turn = 1;
+
+            me.getTurn = function(){
+                return me.turn;
+            };
+
+            me.setTurn = function(turn){
+                me.turn = turn;
+            };
+
+            me.swapTurn = function(player1Type, player2Type){
+                if(player1Type === 'human' && player2Type === 'human'){
+                    me.turn = me.turn === 1 ? 2 : 1;
+                }
+            };
         }]);
 })();

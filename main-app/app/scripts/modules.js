@@ -36,6 +36,10 @@
                     url:'/win',
                     templateUrl: 'html/win-state.html',
                     controller: 'Win'
+                })
+                .state('draw',{
+                    url:'/draw',
+                    templateUrl: 'html/draw-state.html'
                 });
         });
 })();

@@ -13,10 +13,9 @@
                 };
 
             $scope.showTheGame = function(){
-                if(playerType.validatePlayerType(playerType.getPlayer1().type) && validatePlayerType(playerType.getPlayer2().type) ){
+                if(playerType.validatePlayerType(1) && validatePlayerType(2) ){
                     proxy.APICall('newgame', {'player1':playerType.getPlayer1().type, 'player2':playerType.getPlayer2().type})
                         .then(function(response){
-                            console.log('New Game Created: ' + response.data.outcome);
                             game.setBoard(response.data.gameboard);
                             game.setState(response.data.outcome);
                             $state.go('game');

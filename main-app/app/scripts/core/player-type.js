@@ -43,13 +43,18 @@
                 }
             };
 
-            var validatePlayerType = function(playerType){
-                if(playerType === 'human' || playerType === 'random' || playerType === 'pre-trained'){
+            me.validatePlayerType = function(number){
+                if(me['player'+number] === 'human' || me['player'+number] === 'random' || me['player'+number] === 'pre-trained'){
                     return true;
                 }
                 else {
                     return false;
                 }
             };
+
+            me.isHumanVsComputer = function(){
+                return (me.player1.type !== 'human' || me.player2.type !== 'human');
+            };
+
         }]);
 })();
