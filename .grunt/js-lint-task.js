@@ -1,6 +1,6 @@
 (function () {
     'use strict';
     module.exports = {
-        src: ['./main-app/app/js/**/*.js', './.grunt/**/*.js']
+        src: ['./main-app/app/scripts/**/*.js', './.grunt/**/*.js']
     };
 })();

@@ -1,10 +1,60 @@
-@dark-red: #2f0c07;
+@grey_border: #555555;
 
 body {
   background: black;
+  color: white;
+  margin: 0;
+  main {
+    text-align: center;
+    width: 980px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
-h1 {
-  color: @dark-red;
-  border: solid 2pt @dark-red;
+table {
+  margin-left: auto;
+  margin-right: auto;
+  display: table;
+  tr {
+    td {
+      border: 4px @grey_border solid;
+      div {
+        width: 100px;
+        height: 100px;
+      }
+    }
+  }
 }
+
+nav {
+  background: #334455;
+  width:100%;
+  margin: 0;
+  padding: 0;
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    li {
+      float: left;
+      padding: 10px 25px;
+      border: 3px solid #aaaaaa;
+      text-align: center;
+      a {
+        color: #aaaaaa;
+      }
+    }
+  }
+}
+
+.image0, .image1, .image2 { background-image: url('../image/puppy_kitten_sprite.png'); width: 100px; height: 100px;}
+.image0 { background-position: 0 0; }
+.image1 { background-position: -105px 0; }
+.image2 { background-position: -210px 0; }
+
+.playerTypehuman, .playerTyperandom, .playerTypepre-trained { background-image: url('../image/player_type_sprite.png'); width: 100px; height: 100px; display: inline-block; }
+.playerTyperandom { background-position: 0 0; }
+.playerTypehuman { background-position: -110px 0; }
+.playerTypepre-trained { background-position: -220px 0; }

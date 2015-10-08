@@ -3,7 +3,7 @@
 
     module.exports={
         images: {
-            src: ['.build/main-app/app/image/']
+            src: ['.build/main-app/app/image']
         },
         sounds: {
             src: ['.build/main-app/app/sound/']
@@ -18,7 +18,7 @@
             src: ['.build/main-app/app/css/']
         },
         js: {
-            src: ['.build/main-app/app/js/']
+            src: ['.build/main-app/app/scripts/']
         },
         all: {
             src: ['./.build/']

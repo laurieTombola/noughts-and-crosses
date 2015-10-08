@@ -2,8 +2,12 @@
     'use strict';
     module.exports = {
         concat: {
-            src: ['main-app/app/js/modules/**/*.js', 'main-app/app/js/services/**/*.js', 'main-app/app/js/controllers/**/*.js'],
-            dest: '.build//main-app/app/js/app.js',
+            src: ['main-app/app/scripts/*.js',
+                'main-app/app/scripts/core/**/*.js',
+                'main-app/app/scripts/**/directives/**/*.js',
+                'main-app/app/scripts/**/services/**/*.js',
+                'main-app/app/scripts/**/controllers/**/*.js'],
+            dest: '.build//main-app/app/scripts/app.js',
             expand: false
         }
     };
