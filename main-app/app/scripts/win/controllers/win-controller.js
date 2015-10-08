@@ -1,7 +1,7 @@
 (function () {
     'use strict';
     angular.module('Tombola.Games.NoughtsAndCrosses.Win')
-        .controller('Win', ['$scope', '$interval',function($scope, $interval){
+        .controller('Win', ['$scope', '$interval', '$state',function($scope, $interval, $state){
             $scope.e = '';
             $scope.show1 = false;
 
@@ -10,6 +10,9 @@
             });
 
             var loop = function(){
+                if($state.$current != 'win'){
+                    return;
+                }
                 $interval(function(){
                     $scope.e += 'e';
                     if($scope.e.length === 10){

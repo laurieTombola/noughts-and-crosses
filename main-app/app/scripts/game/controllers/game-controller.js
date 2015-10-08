@@ -40,13 +40,14 @@
                             }
                             game.setState(response.data.outcome);
                             if(game.getState() === 'Draw'){
-                                console.log('Draw');
+                                $scope.pageHeading = 'Nobody Won :(';
+                                $interval(function(){
+                                    $state.go('draw');
+                                }, 6000, 1);
                             }
                             else if(game.getState() === 'Win'){
-                                console.log('Win');
                                 $scope.pageHeading = 'Player ' + response.data.winner + 'Wins!';
                                 $interval(function(){
-                                    console.log('should be switching to win');
                                     $state.go('win');
                                 }, 6000, 1);
                             }

@@ -43,7 +43,7 @@
                 }
             };
 
-            var validatePlayerType = function(playerType){
+            me.validatePlayerType = function(playerType){
                 if(playerType === 'human' || playerType === 'random' || playerType === 'pre-trained'){
                     return true;
                 }
