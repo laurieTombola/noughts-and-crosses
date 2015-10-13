@@ -6,7 +6,8 @@
         jsLintTask = require('./.grunt/js-lint-task'),
         concatTask = require('./.grunt/js-concat-task'),
         cleanTask = require('./.grunt/clean-task'),
-        watcher = require('./.grunt/watch-task');
+        watcher = require('./.grunt/watch-task'),
+        karmaTask = require('./.grunt/karma-task');
 
     module.exports = function(grunt){
         grunt.initConfig({
@@ -17,7 +18,8 @@
             jshint: jsLintTask,
             concat: concatTask,
             clean: cleanTask,
-            watch: watcher
+            watch: watcher,
+            karma: karmaTask
         });
 
         grunt.loadNpmTasks('grunt-contrib-copy');
@@ -26,6 +28,8 @@
         grunt.loadNpmTasks('grunt-contrib-concat');
         grunt.loadNpmTasks('grunt-contrib-clean');
         grunt.loadNpmTasks('grunt-contrib-watch');
+        grunt.loadNpmTasks('grunt-karma');
+
 
         grunt.loadNpmTasks('grunt-lesslint');
 
