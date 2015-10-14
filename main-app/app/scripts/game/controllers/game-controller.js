@@ -25,17 +25,17 @@
             $scope.clickBox = function(box){
                 if(game.getBoard()[parseInt(box)] === '0' && game.getState() === 'Continue'){
                     proxy.APICall('makemove', {'playerNumber':$scope.turn, 'chosenSquare':box})
-                        .then(function(response){
+                        .then(function(data){
                             // Success
                             if(playerType.isHumanVsComputer()){
                                 game.setBoard(setCharAt(game.getBoard(), box, $scope.turn));
                                 $scope.turn = $scope.turn === 1 ? 2 : 1;
-                                me.turnDelayPromise = $interval(function(){game.setBoard(response.data.gameboard);$scope.turn = $scope.turn === 1 ? 2 : 1;}, 2000, 1);
+                                me.turnDelayPromise = $interval(function(){game.setBoard(data.gameboard);$scope.turn = $scope.turn === 1 ? 2 : 1;}, 2000, 1);
                             }
                             else{
-                                game.setBoard(response.data.gameboard);
+                                game.setBoard(data.gameboard);
                             }
-                            game.setState(response.data.outcome);
+                            game.setState(data.outcome);
                             if(game.getState() === 'Draw'){
                                 $scope.pageHeading = 'Nobody Won :(';
                                 $interval(function(){
@@ -43,7 +43,7 @@
                                 }, 6000, 1);
                             }
                             else if(game.getState() === 'Win'){
-                                $scope.pageHeading = 'Player ' + response.data.winner + 'Wins!';
+                                $scope.pageHeading = 'Player ' + data.winner + 'Wins!';
                                 $interval(function(){
                                     $state.go('win');
                                 }, 6000, 1);

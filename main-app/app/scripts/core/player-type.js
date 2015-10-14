@@ -44,7 +44,8 @@
             };
 
             me.validatePlayerType = function(number){
-                if(me['player'+number] === 'human' || me['player'+number] === 'random' || me['player'+number] === 'pre-trained'){
+                console.log(me['player'+number].type);
+                if(me['player'+number].type === 'human' || me['player'+number].type === 'random' || me['player'+number].type === 'pre-trained'){
                     return true;
                 }
                 else {
