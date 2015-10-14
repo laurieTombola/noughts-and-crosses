@@ -9,8 +9,7 @@
                 var defered = $q.defer();
                 $http.post('http://eutaveg-01.tombola.emea:35000/api/v1.0/'+APIName, data, {'withCredentials': 'true'})
                     .then(function(response) {
-                        defered.resolve(response);
-                        me.response = response;
+                        defered.resolve(response.data);
                         return response;
                     }, function(response) {
                         defered.reject(response);
