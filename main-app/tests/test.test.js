@@ -11,16 +11,14 @@
                 gameServerProxy = $injector.get('GameServerProxy');
                 // Set up the mock http service responses
                 $httpBackend = $injector.get('$httpBackend');
-                // backend definition common for all tests
-                requestHandler = $httpBackend.when('POST', 'http://eutaveg-01.tombola.emea:35000/api/v1.0/makemove')
-                    .respond(function(){
-                        return [200, {board:'000000000'}];
-                    });
             });
         });
 
         it('should call the success callback', function(){
-            $httpBackend.expectPOST('http://eutaveg-01.tombola.emea:35000/api/v1.0/makemove');
+            $httpBackend.expectPOST('http://eutaveg-01.tombola.emea:35000/api/v1.0/makemove')
+                .respond(function(){
+                return [200, {board:'000000000'}];
+            });
             gameServerProxy.APICall('makemove', {'player1':'human', 'player2':'human'}).then(
             function(data){
                 data.board.should.equal('000000000');
