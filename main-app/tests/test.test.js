@@ -22,8 +22,8 @@
         it('should call the success callback', function(){
             $httpBackend.expectPOST('http://eutaveg-01.tombola.emea:35000/api/v1.0/makemove');
             gameServerProxy.APICall('makemove', {'player1':'human', 'player2':'human'}).then(
-            function(response){
-                response.data.board.should.equal('000000000');
+            function(data){
+                data.board.should.equal('000000000');
             });
             $httpBackend.flush();
         });
@@ -34,8 +34,8 @@
                     return [400, {}];
                 });
             gameServerProxy.APICall('incorrect-api-call', {'player1':'human', 'player2':'human'}).then(
-                function(response){
-                    assert.fail('Code should not have been reached. Response: '+response);
+                function(data){
+                    assert.fail('Code should not have been reached. Response: '+data);
                 },
                 function(response){
                     response.status.should.equal(400);
