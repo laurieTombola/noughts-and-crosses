@@ -2,14 +2,13 @@
     'use strict';
 
     describe('GameServerProxy tests', function(){
-        var gameServerProxy, $httpBackend, requestHandler;
+        var gameServerProxy, $httpBackend;
 
         beforeEach(function(){
             module('Tombola.Games.NoughtsAndCrosses.API');
 
             inject(function($injector){
                 gameServerProxy = $injector.get('GameServerProxy');
-                // Set up the mock http service responses
                 $httpBackend = $injector.get('$httpBackend');
             });
         });
