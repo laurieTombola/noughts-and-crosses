@@ -24,6 +24,10 @@
         js: {
             files: ['main-app/app/scripts/**/*.js'],
             tasks: ['copyJS']
+        },
+        tests: {
+            files: ['main-app/tests/**/*.test.js'],
+            tasks: ['karmoo']
         }
     };
 })();
