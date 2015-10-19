@@ -3,7 +3,8 @@ var mocks;
     'use strict';
     mocks = {
         $state: {
-            $current: 'lobby'
+            $current: 'lobby',
+            go: function(state){}
         }
     };
 })();
