@@ -14,6 +14,7 @@
                     'main-app/app/scripts/**/directives/*.js',
                     'main-app/app/scripts/**/controllers/*.js',
                     'main-app/app/scripts/core/*.js',
+                    'main-app/mocks/**/*.js',
                     'main-app/tests/*.test.js']
             }
         }
