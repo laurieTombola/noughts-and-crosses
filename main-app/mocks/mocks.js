@@ -3,7 +3,7 @@ var mocks;
     'use strict';
     mocks = {
         $state: {
-            $current: 'Keith'
+            $current: 'lobby'
         }
     };
 })();
