@@ -1,13 +1,12 @@
 (function () {
     'use strict';
     describe('win-controller tests', function(){
-        var winController, scope, $controller, $interval, sandbox, stateSpy;
+        var winController, scope, $controller, $interval;
         beforeEach(function(){
             module('Tombola.Games.NoughtsAndCrosses.Win',
                 function($provide){
                     $provide.value("$state", mocks.$state);
             });
-            sandbox = sinon.sandbox.create();
             inject(function($injector){
                 $controller = $injector.get('$controller');
                 scope = $injector.get('$rootScope');
@@ -36,6 +35,13 @@
             $interval.flush(300);
             scope.e.should.equal('eeeeeee');
             scope.e.length.should.equal(7);
+        });
+        it('should return from the statement',function(){
+            mocks.$state.$current = 'lobby';
+            scope.$broadcast('$viewContentLoaded');
+            $interval.flush(100);
+            scope.e.should.equal('');
+            scope.e.length.should.equal(0);
         });
     });
 })();
