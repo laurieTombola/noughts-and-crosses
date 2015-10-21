@@ -2,7 +2,7 @@
     'use strict';
 
     describe('lobby-controller tests', function(){
-        var $scope, $rootScope, controller, mySpy, mySpy2, mySpy3, $q;
+        var $scope, $rootScope, controller, mySpy, mySpy2, mySpy3, $q, sandbox;
 
         beforeEach(function(){
             module('Tombola.Games.NoughtsAndCrosses.Lobby');
@@ -11,6 +11,7 @@
                 $rootScope = _$rootScope_;
                 $scope = $rootScope.$new();
                 $q = _$q_;
+                sandbox = sinon.sandbox.create();
                 controller = $controller('Lobby', {
                     $scope:$scope,
                     $state:mocks.$state,
@@ -22,28 +23,28 @@
         });
 
         afterEach(function(){
-            mySpy.restore();
+            sandbox.restore();
         });
 
         it('should call playerType.getPlayer1', function(){
-            mySpy = sinon.spy(mocks.PlayerType, 'getPlayer1');
+            mySpy = sandbox.spy(mocks.PlayerType, 'getPlayer1');
             $scope.player1();
             mySpy.should.have.been.calledOnce;
         });
 
         it('should call playerType.getPlayer2', function(){
-            mySpy = sinon.spy(mocks.PlayerType, 'getPlayer2');
+            mySpy = sinon.sandbox.spy(mocks.PlayerType, 'getPlayer2');
             $scope.player2();
             mySpy.should.have.been.calledOnce;
         });
 
         it('showTheGame should safely launch the game', function(){
             var deferred = $q.defer();
-            mySpy = sinon.stub(mocks.PlayerType, 'validatePlayerType', function(){return true;});
-            mySpy2 = sinon.spy(mocks.$state, 'go');
-            sinon.stub(mocks.PlayerType, 'getPlayer1', function(){return {type:'human'};});
-            sinon.stub(mocks.PlayerType, 'getPlayer2', function(){return {type:'human'};});
-            sinon.stub(mocks.GameServerProxy, 'APICall', function(){return deferred.promise;});
+            mySpy = sandbox.stub(mocks.PlayerType, 'validatePlayerType', function(){return true;});
+            mySpy2 = sandbox.spy(mocks.$state, 'go');
+            sandbox.stub(mocks.PlayerType, 'getPlayer1', function(){return {type:'human'};});
+            sandbox.stub(mocks.PlayerType, 'getPlayer2', function(){return {type:'human'};});
+            sandbox.stub(mocks.GameServerProxy, 'APICall', function(){return deferred.promise;});
 
             $scope.showTheGame();
 
@@ -55,6 +56,13 @@
             $rootScope.$digest();
             mySpy.should.have.been.calledTwice;
             mySpy2.should.have.been.calledOnce.calledWithExactly('game');
+        });
+
+        it('should call PlayerType.ChangePlayerType', function(){
+            mySpy = sandbox.spy(mocks.PlayerType, 'changePlayerType');
+            var playerNumber = 1;
+            $scope.changePlayerType(playerNumber);
+            mySpy.should.have.been.calledOnce.calledWithExactly(playerNumber);
         });
     });
 })();
