@@ -13,10 +13,6 @@
             });
         });
 
-        afterEach(function(){
-
-        });
-
         it('', function(){
             var directiveElement = '<game-board-square square-number="0"></game-board-square>';
 
