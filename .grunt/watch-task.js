@@ -28,6 +28,10 @@
         tests: {
             files: ['main-app/tests/**/*.test.js'],
             tasks: ['karmoo']
+        },
+        grunttasks: {
+            files: ['.grunt/**/*.js', 'gruntfile.js', 'karma.conf.js'],
+            tasks: ['grunt']
         }
     };
 })();
