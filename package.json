@@ -38,7 +38,6 @@
     "karma-nyan-reporter": "~0.2.2",
     "karma-phantomjs-launcher": "~0.2.1",
     "karma-chrome-launcher": "~0.2.1",
-    "bower": "~1.6.3",
-    "karma-ng-html2js-preprocessor": "~0.2.0"
+    "bower": "~1.6.3"
   }
 }
