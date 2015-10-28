@@ -25,12 +25,6 @@
             src: ['**/*.*'],
             dest: '.build/main-app/app/third-party/',
             expand: true
-        },
-        karmapartials: {
-            cwd: './main-app/app',
-            src: ['html/**/*.html'],
-            dest: './main-app/tests/',
-            expand: true
         }
     };
 })();

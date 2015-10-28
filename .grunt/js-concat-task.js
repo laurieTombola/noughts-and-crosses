@@ -1,8 +1,10 @@
 (function () {
     'use strict';
+    
     module.exports = {
         concat: {
-            src: ['main-app/app/scripts/*.js',
+            src: ['main-app/app/scripts/modules.js',
+                'main-app/app/scripts/template-cache.js',
                 'main-app/app/scripts/core/**/*.js',
                 'main-app/app/scripts/**/directives/**/*.js',
                 'main-app/app/scripts/**/services/**/*.js',

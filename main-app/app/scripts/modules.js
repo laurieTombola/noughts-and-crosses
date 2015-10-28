@@ -26,20 +26,20 @@
             $stateProvider
                 .state('lobby', {
                     url:'/lobby',
-                    templateUrl: 'html/lobby-state.html'
+                    templateProvider:function ($templateCache){ return $templateCache.get("html/lobby-state.html");}
                 })
                 .state('game',{
                     url:'/game',
-                    templateUrl: 'html/game-state.html'
+                    templateProvider:function ($templateCache){ return $templateCache.get("html/game-state.html");}
                 })
                 .state('win',{
                     url:'/win',
-                    templateUrl: 'html/win-state.html',
+                    templateProvider:function ($templateCache){ return $templateCache.get("html/win-state.html");},
                     controller: 'Win'
                 })
                 .state('draw',{
                     url:'/draw',
-                    templateUrl: 'html/draw-state.html'
+                    templateProvider:function ($templateCache){ return $templateCache.get("html/draw-state.html");}
                 });
         });
 })();
