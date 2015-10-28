@@ -1,10 +1,10 @@
 (function () {
     'use strict';
     angular.module('Tombola.Games.NoughtsAndCrosses.Lobby')
-        .directive('playerOptions', [function(){
+        .directive('playerOptions', ['$templateCache' ,function($templateCache){
             return {
                 restrict: 'E',
-                templateUrl: 'html/player-options.html'
+                template: $templateCache.get('html/player-options.html')
             };
         }]);
 })();

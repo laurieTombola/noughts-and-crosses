@@ -31,7 +31,7 @@
         grunt.loadNpmTasks('grunt-karma');
         grunt.loadNpmTasks('grunt-lesslint');
 
-        grunt.registerTask('karmoo', ['copy:karmapartials', 'karma']);
+        grunt.registerTask('karmoo', ['karma']);
         grunt.registerTask('lesser', ['lesslint', 'clean:css', 'less']);
         grunt.registerTask('copyFiles', ['clean:bower', 'clean:images', 'clean:sounds', 'clean:html', 'copy']);
         grunt.registerTask('copyJS', ['jshint', 'clean:js', 'concat']);

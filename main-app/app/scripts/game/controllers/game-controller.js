@@ -16,6 +16,7 @@
                     $scope.turn = 1;
                 }
             };
+
             intialiseTurn();
 
             $scope.board = function (){

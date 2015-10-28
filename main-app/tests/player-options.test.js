@@ -4,6 +4,8 @@
     describe('player options tests', function(){
         var $compile, $rootScope, $scope;
 
+        beforeEach(module('Tombola.Games.NoughtsAndCrosses'));
+
         beforeEach(function(){
             module('Tombola.Games.NoughtsAndCrosses.Lobby');
 
@@ -19,14 +21,14 @@
         });
 
         it('should correctly insert the player options', function(){
-            var directiveElement = '<player-options></player-options>';
-
-            var element = $compile(directiveElement)($rootScope);
-            $rootScope.$digest();
-
-            var children = element.children();
-            children.attr('class').should.equal('image1');
-            children.attr('ng-click').should.equal('clickBox(0)');
+            $scope.player1 = function(){
+                return {type:'human'}
+            };
+            $scope.player2 = $scope.player1;
+            var element = $compile('<player-options></player-options>')($scope);
+            $scope.$digest();
+            element[0].children[0].className.should.equal('playerTypehuman');
+            element[0].children[0].getAttribute('ng-click').should.equal('changePlayerType(1)');
         });
     });
 })();

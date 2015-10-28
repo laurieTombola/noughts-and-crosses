@@ -1,10 +1,10 @@
 (function () {
     'use strict';
     angular.module('Tombola.Games.NoughtsAndCrosses.Game')
-        .directive('gameBoard', [function(){
+        .directive('gameBoard', ['$templateCache' ,function($templateCache){
             return {
                 restrict: 'E',
-                templateUrl: 'html/game-board.html'
+                template: $templateCache.get('html/game-board.html')
             };
         }]);
 })();

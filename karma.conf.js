@@ -1,7 +1,7 @@
 // Karma configuration
 // Generated on Mon Oct 12 2015 10:31:11 GMT+0100 (BST)
 module.exports = function(config) {
-  config.set({
+    config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
     basePath: '',
@@ -45,5 +45,5 @@ module.exports = function(config) {
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
     singleRun: true
-  })
+    })
 };

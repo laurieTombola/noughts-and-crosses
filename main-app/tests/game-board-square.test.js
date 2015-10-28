@@ -13,7 +13,7 @@
             });
         });
 
-        it('', function(){
+        it('should test the squares directive', function(){
             var directiveElement = '<game-board-square square-number="0"></game-board-square>';
 
             $rootScope.board = function(){return [1,0,0,0,0,0,0,0,0]};
