@@ -1,5 +1,6 @@
 (function () {
     'use strict';
+    
     module.exports = {
         concat: {
             src: ['main-app/app/scripts/modules.js',
